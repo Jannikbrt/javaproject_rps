@@ -9,10 +9,11 @@
 				<script>
         
                    var ComputerScore = 0;
-                   var PlayerScore = 0;
+                   var PlayerScore = 0;  //Deklarieren von Punktestand Variable
                    var UnentschiedenScore = 0;
 
-                    function getComputerChoice(){
+                    function getComputerChoice(){ 
+                        //This function randomly generates a number (either 1, 2 or 3) depending on this the selection will be made and returned
                         var Zufall = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
                         if(Zufall == 1){
                             computerSelection = "stein"                            
@@ -28,16 +29,18 @@
                         }  
                     }
 
-                    function getPlayerChoice()
-                    {
+                    function getPlayerChoice(){
+                        //This function will ask the Player to choose one of the three options and put the result into lowercase and return it
                         playerSelection = prompt("Gebe Stein, Papier oder Schere ein");
                         playerErgebnis = playerSelection.toLowerCase();
                         return (playerErgebnis);
                     }
                     
 
-                    function RockPaperScissors(playerErgebnis, computerSelection)
-                    {
+                    function RockPaperScissors(playerErgebnis, computerSelection){
+                        //This function decides which side has won by comparing both inputs (Computer, Player)
+                        //Also count up the Score for the winning side
+                        //Returns Selections and Scores
                         if (playerErgebnis == "stein" && computerSelection == "papier"){
                             console.log("Du hast verloren!\n" + computerSelection + " schlägt " + playerErgebnis);
                             ComputerScore++;
@@ -74,6 +77,7 @@
                     }
 
                     function ErgebnisLesen(PlayerScore, ComputerScore){
+                        //This function will compare the scores and decide who wins
                         if(PlayerScore > ComputerScore){
                             console.log("Glückwunsch du hast Gewonnen!");
                         }
@@ -86,16 +90,18 @@
                     }
 
                     function EndstandLesen(PlayerScore, ComputerScore, UnentschiedenScore){
+                        //This function gives out the final score
                         console.log("ENDSTAND!\nPlayer: " + PlayerScore + "\nComputer: " + ComputerScore + "\nUnentschieden :" + UnentschiedenScore);
                     }
 
-                    function WahlPunktestand(playerErgebnis, computerSelection, PlayerScore, ComputerScore, UnentschiedenScore)
-                    {
+                    function WahlPunktestand(playerErgebnis, computerSelection, PlayerScore, ComputerScore, UnentschiedenScore){
+                        //This function shows the Player's Choice and the current score
                         console.log("Deine Wahl: " + playerErgebnis + "\nWahl des Computers: " + computerSelection);
                         console.log("Aktueller Punktestand\nPlayer: " + PlayerScore + "\nComputer: " + ComputerScore + "\nUnentschieden :" + UnentschiedenScore);
                     }
                     	
                     function game(){
+                        //Game of Rock Paper Scissors will be played 5 Times
                         for(var x = 1; x <= 5; x++){               
                             getComputerChoice();
                             getPlayerChoice();
