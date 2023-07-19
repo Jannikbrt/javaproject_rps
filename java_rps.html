@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>Rock Paper Scissors</title>
+	</head>
+		<body>
+				
+				<script>
+        
+                   var ComputerScore = 0;
+                   var PlayerScore = 0;
+                   var UnentschiedenScore = 0;
+
+                    function getComputerChoice(){
+                        var Zufall = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+                        if(Zufall == 1){
+                            computerSelection = "stein"                            
+                            return(computerSelection);
+                        }                       
+                        else if(Zufall == 2){
+                            computerSelection = "papier"                           
+                            return(computerSelection);
+                        }  
+                        else{
+                            computerSelection = "schere";                          
+                            return(computerSelection);
+                        }  
+                    }
+
+                    function getPlayerChoice()
+                    {
+                        playerSelection = prompt("Gebe Stein, Papier oder Schere ein");
+                        playerErgebnis = playerSelection.toLowerCase();
+                        return (playerErgebnis);
+                    }
+                    
+
+                    function RockPaperScissors(playerErgebnis, computerSelection)
+                    {
+                        if (playerErgebnis == "stein" && computerSelection == "papier"){
+                            console.log("Du hast verloren!\n" + computerSelection + " schlägt " + playerErgebnis);
+                            ComputerScore++;
+                        }
+                        else if(playerErgebnis == "stein" && computerSelection == "schere"){
+                            console.log("Du hast gewonnen!\n" + playerErgebnis + " schlägt " + computerSelection);
+                            PlayerScore++;
+                        }
+                        else if(playerErgebnis == "schere" && computerSelection == "papier"){
+                            console.log("Du hast gewonnen!\n" + playerErgebnis + " schlägt " + computerSelection);
+                            PlayerScore++;
+                        }
+                        else if(playerErgebnis == "schere" && computerSelection == "stein"){
+                            console.log("Du hast verloren!\n" + computerSelection + " schlägt " + playerErgebnis);
+                            ComputerScore++;
+                        }
+                        else if(playerErgebnis == "papier" && computerSelection == "stein"){
+                            console.log("Du hast gewonnen!\n" + playerErgebnis + " schlägt " + computerSelection);
+                            PlayerScore++;
+                        }
+                        else if(playerErgebnis == "papier" && computerSelection == "schere"){
+                            console.log("Du hast verloren!\n" + computerSelection + " schlägt " + playerErgebnis);
+                            ComputerScore++;
+                        }
+                        else{
+                            console.log("Unentschieden!\n Ihr habt beide " + playerErgebnis + " gewählt");
+                            UnentschiedenScore++;
+                        }
+                        return(computerSelection);
+                        return(playerErgebnis);
+                        return(PlayerScore);
+                        return(ComputerScore);
+                        return(UnentschiedenScore);
+                    }
+
+                    function ErgebnisLesen(PlayerScore, ComputerScore){
+                        if(PlayerScore > ComputerScore){
+                            console.log("Glückwunsch du hast Gewonnen!");
+                        }
+                        else if(PlayerScore < ComputerScore){
+                            console.log("Schade du hast leider Verloren!");
+                        }
+                        else{
+                            console.log("Das Spiel endet in einem Unentschieden!");
+                        }
+                    }
+
+                    function EndstandLesen(PlayerScore, ComputerScore, UnentschiedenScore){
+                        console.log("ENDSTAND!\nPlayer: " + PlayerScore + "\nComputer: " + ComputerScore + "\nUnentschieden :" + UnentschiedenScore);
+                    }
+
+                    function WahlPunktestand(playerErgebnis, computerSelection, PlayerScore, ComputerScore, UnentschiedenScore)
+                    {
+                        console.log("Deine Wahl: " + playerErgebnis + "\nWahl des Computers: " + computerSelection);
+                        console.log("Aktueller Punktestand\nPlayer: " + PlayerScore + "\nComputer: " + ComputerScore + "\nUnentschieden :" + UnentschiedenScore);
+                    }
+                    	
+                    function game(){
+                        for(var x = 1; x <= 5; x++){               
+                            getComputerChoice();
+                            getPlayerChoice();
+                            RockPaperScissors(playerErgebnis, computerSelection);
+                            WahlPunktestand(playerErgebnis, computerSelection, PlayerScore, ComputerScore, UnentschiedenScore);
+                        }
+                        EndstandLesen(PlayerScore, ComputerScore, UnentschiedenScore);                     
+                        ErgebnisLesen(PlayerScore, ComputerScore);
+                    }
+
+                    game();
+
+				</script>
+		</body>
+</html>
