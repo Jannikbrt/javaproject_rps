@@ -9,7 +9,7 @@
 				<script>
         
                    var ComputerScore = 0;
-                   var PlayerScore = 0;  //Deklarieren von Punktestand Variable
+                   var PlayerScore = 0;  //Declaring score variables which are used later
                    var UnentschiedenScore = 0;
 
                     function getComputerChoice(){ 
@@ -69,11 +69,17 @@
                             console.log("Unentschieden!\n Ihr habt beide " + playerErgebnis + " gewählt");
                             UnentschiedenScore++;
                         }
-                        return(computerSelection);
-                        return(playerErgebnis);
-                        return(PlayerScore);
-                        return(ComputerScore);
-                        return(UnentschiedenScore);
+
+                        const gameStats = {
+                            computerSelection,
+                            playerErgebnis,
+                            PlayerScore,
+                            ComputerScore,
+                            UnentschiedenScore
+                        }
+
+                        return gameStats;
+                        
                     }
 
                     function ErgebnisLesen(PlayerScore, ComputerScore){
